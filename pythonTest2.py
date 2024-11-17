@@ -8,17 +8,19 @@ currentTextLine = 0
 result = []
 
 
-def func(y, x, yd, xd, t):
+def func(y, x, t):
     global exist
-    cek = 0
-    for i in range(1, len(W[t])):
-        if 0 <= y+i*yd < N[t] and 0 <= x+i*xd < M[t]:
-            if W[t][i] == text[currentTextLine+i*yd][x+i*xd]:
-                cek += 1
-        else:
-            break
-    if cek == len(W[t])-1:
-        exist += 1
+    for yd in range(-1, 2):
+        for xd in range(-1, 2):
+            cek = 0
+            for i in range(1, len(W[t])):
+                if 0 <= y+i*yd < N[t] and 0 <= x+i*xd < M[t]:
+                    if W[t][i] == text[currentTextLine+i*yd][x+i*xd]:
+                        cek += 1
+                else:
+                    break
+            if cek == len(W[t])-1:
+                exist += 1
 
 
 while not 1 <= T <= 100:
@@ -37,9 +39,7 @@ for t in range(T):
     for y in range(N[t]):
         for x in range(M[t]):
             if W[t][0] == text[currentTextLine][x]:
-                for i in range(-1, 2):
-                    for j in range(-1, 2):
-                        func(y, x, i, j, t)
+                func(y, x, t)
         currentTextLine += 1
     result.append(exist)
     exist = 0
