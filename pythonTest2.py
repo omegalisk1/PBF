@@ -5,7 +5,7 @@ M = []
 text = []
 W = []
 currentTextLine = 0
-result=[]
+result = []
 
 
 def func(y, x, yd, xd, t):
@@ -19,6 +19,7 @@ def func(y, x, yd, xd, t):
             break
     if cek == len(W[t])-1:
         exist += 1
+
 
 while not 1 <= T <= 100:
     T = int(input())
@@ -41,6 +42,6 @@ for t in range(T):
                         func(y, x, i, j, t)
         currentTextLine += 1
     result.append(exist)
-    exist=0
+    exist = 0
 for x in range(len(result)):
     print(f"Case {x+1}: {result[x]}")
