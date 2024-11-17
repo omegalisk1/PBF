@@ -42,5 +42,5 @@ for t in range(T):
         currentTextLine += 1
     result.append(exist)
     exist=0
-for x in result:
-    print(f"Case 1: {x}")
+for x in range(len(result)):
+    print(f"Case {x+1}: {result[x]}")
