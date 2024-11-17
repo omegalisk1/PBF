@@ -1,26 +1,46 @@
-baris=3
-kolom=4
-d="cat"
-text=["catt","aata","tatc"]
-exist=0
+exist = 0
+T = 0
+N = []
+M = []
+text = []
+W = []
+currentTextLine = 0
+result=[]
 
-def func(y,x,yd,xd):
+
+def func(y, x, yd, xd, t):
     global exist
-    cek=0
-    for i in range(1,len(d)):
-        if 0<=y+i*yd<baris and 0<=x+i*xd<kolom:
-            if d[i]==text[y+i*yd][x+i*xd]:
-                cek+=1
+    cek = 0
+    for i in range(1, len(W[t])):
+        if 0 <= y+i*yd < N[t] and 0 <= x+i*xd < M[t]:
+            if W[t][i] == text[currentTextLine+i*yd][x+i*xd]:
+                cek += 1
         else:
             break
-    if cek==len(d)-1:
-        exist+=1
+    if cek == len(W[t])-1:
+        exist += 1
 
-for y in range(baris):
-    for x in range(kolom):
-        if d[0]==text[y][x]:
-            for i in range(-1,2):
-                for j in range(-1,2):
-                    func(y,x,i,j)
-
-print(exist)
+while not 1 <= T <= 100:
+    T = int(input())
+for t in range(T):
+    N.append(int(input()))
+    M.append(int(input()))
+    while not 1 <= N[t] <= 100 or not 1 <= M[t] <= 100:
+        N[t] = int(input())
+        M[t] = int(input())
+    for x in range(N[t]):
+        text.append(input())
+    W.append(input())
+    while not 1 <= len(W[t]) <= 100:
+        W[t] = int(input())
+    for y in range(N[t]):
+        for x in range(M[t]):
+            if W[t][0] == text[currentTextLine][x]:
+                for i in range(-1, 2):
+                    for j in range(-1, 2):
+                        func(y, x, i, j, t)
+        currentTextLine += 1
+    result.append(exist)
+    exist=0
+for x in result:
+    print(f"Case 1: {x}")
