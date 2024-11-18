@@ -24,17 +24,12 @@ def func(y, x, t):
 
 file = open("input.in", "r")
 T = int(file.readline())
-print(T)
 for t in range(T):
     N.append(int(file.readline()))
     M.append(int(file.readline()))
-    print(N[t])
-    print(M[t])
     for x in range(N[t]):
         text.append(file.readline().replace("\n",""))
-        print(text[x])
     W.append(file.readline().replace("\n",""))
-    print(W[t])
     for y in range(N[t]):
         for x in range(M[t]):
             if W[t][0] == text[currentTextLine][x]:
