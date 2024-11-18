@@ -22,20 +22,19 @@ def func(y, x, t):
             if cek == len(W[t])-1:
                 exist += 1
 
-
-while not 1 <= T <= 100:
-    T = int(input())
+file = open("input.in", "r")
+T = int(file.readline())
+print(T)
 for t in range(T):
-    N.append(int(input()))
-    M.append(int(input()))
-    while not 1 <= N[t] <= 100 or not 1 <= M[t] <= 100:
-        N[t] = int(input())
-        M[t] = int(input())
+    N.append(int(file.readline()))
+    M.append(int(file.readline()))
+    print(N[t])
+    print(M[t])
     for x in range(N[t]):
-        text.append(input())
-    W.append(input())
-    while not 1 <= len(W[t]) <= 100:
-        W[t] = int(input())
+        text.append(file.readline().replace("\n",""))
+        print(text[x])
+    W.append(file.readline().replace("\n",""))
+    print(W[t])
     for y in range(N[t]):
         for x in range(M[t]):
             if W[t][0] == text[currentTextLine][x]:
@@ -43,5 +42,8 @@ for t in range(T):
         currentTextLine += 1
     result.append(exist)
     exist = 0
+file.close()
+file = open("output.in", "w")
 for x in range(len(result)):
-    print(f"Case {x+1}: {result[x]}")
+    file.write(f"Case {x+1}: {result[x]}\n")
+file.close()
