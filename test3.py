@@ -18,17 +18,14 @@ def binary_search(array, value, low, high):
 sys.setrecursionlimit(100000)
 array = []
 fileIn = open("input.in", "r")
-fileOut = open("output.in", "w")
 for i in range(10000):
     array.append(fileIn.readline().replace("\n", ""))
 for i in range(10000):
     value = fileIn.readline().replace("\n", "")
     print(f"DICARI {value}")
-    answer = binary_search(array, value, 0, 9999)
-    if answer != -1:
-        total += 1
-    fileOut.write(f"{answer}\n")
-    print(f"FOUND array[{answer}] {value}")
+    for j in range(10000):
+        if (array[j] == value):
+            total += 1
+            print(f"FOUND array[{j}] {value}")
+            break
 print(f"Total : {total}")
-fileIn.close()
-fileOut.close()
